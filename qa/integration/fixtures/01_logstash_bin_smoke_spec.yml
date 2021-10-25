@@ -1,0 +1,15 @@
+---
+services:
+  - logstash
+config: |-
+ input {
+    tcp {
+      port => '<%=options[:port]%>'
+    }
+
+    generator { count => 5 }
+  }
+  output {
+    file { path => '<%=options[:random_file]%>' }
+  }
+
